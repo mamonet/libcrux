@@ -1,6 +1,8 @@
 #pragma once
 
-#include "sha256.h"
+///// SYNC_WITH_LIBJADE_GENERATE_HEADER_NAMES_START
+#include "sha256_ref.h"
+///// SYNC_WITH_LIBJADE_GENERATE_HEADER_NAMES_END
 #include "x25519_ref.h"
 #include "x25519_mulx.h"
 #include "sha3_224_ref.h"

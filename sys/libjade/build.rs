@@ -105,7 +105,9 @@ mod x64_build {
             .unwrap_or_default();
 
         let files = svec![
-            "sha256.s",
+///// SYNC_WITH_LIBJADE_GENERATE_ASSEMBLY_FILENAMES_START
+            "sha256_ref.s"
+///// SYNC_WITH_LIBJADE_GENERATE_ASSEMBLY_FILENAMES_END
             "x25519_ref.s",
             "x25519_mulx.s",
             "sha3_224_ref.s",

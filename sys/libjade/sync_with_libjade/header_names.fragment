@@ -1,0 +1,6 @@
+{% for hash in instructions['hashes'] %}
+{%- for impl in hash['implementations'] %}
+#include "{{ hash['name'] }}_{{ impl['name'] }}.h"
+{% endfor %}
+{%- endfor -%}
+
