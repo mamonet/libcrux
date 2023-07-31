@@ -1,0 +1,5 @@
+{%- for hash in instructions['hashes'] %}
+            .allowlist_function("{{ hash['allowlist_prefix'] }}")
+            .allowlist_var("{{ hash['allowlist_prefix'] | upper }}")
+{% endfor -%}
+

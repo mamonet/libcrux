@@ -1,6 +1,0 @@
-{% for hash in instructions['hashes'] %}
-{%- for impl in hash['implementations'] %}
-            "{{ hash['name'] }}_{{ impl['name'] }}.s"
-{% endfor %}
-{%- endfor -%}
-

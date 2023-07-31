@@ -41,8 +41,13 @@ mod x64_build {
             // Set include paths for headers
             .clang_args(clang_args)
             // Allow function we want to have in
+///// SYNC_WITH_UPSTREAM_GENERATE_ALLOWLIST_START
             .allowlist_function("jade_hash_.*")
             .allowlist_var("JADE_HASH_.*")
+
+            .allowlist_function("jade_hash_sha3_224_.*")
+            .allowlist_var("JADE_HASH_SHA3_224_.*")
+///// SYNC_WITH_UPSTREAM_GENERATE_ALLOWLIST_END
             .allowlist_function("jade_scalarmult_curve25519_.*")
             .allowlist_var("JADE_SCALARMULT_CURVE25519_.*")
             .allowlist_function("jade_hash_sha3_.*")
@@ -105,12 +110,12 @@ mod x64_build {
             .unwrap_or_default();
 
         let files = svec![
-///// SYNC_WITH_LIBJADE_GENERATE_ASSEMBLY_FILENAMES_START
-            "sha256_ref.s"
-///// SYNC_WITH_LIBJADE_GENERATE_ASSEMBLY_FILENAMES_END
+///// SYNC_WITH_UPSTREAM_GENERATE_REF_ASSEMBLY_FILENAMES_START
+            "sha256_ref.s",
+            "sha3_224_ref.s",
+///// SYNC_WITH_UPSTREAM_GENERATE_REF_ASSEMBLY_FILENAMES_END
             "x25519_ref.s",
             "x25519_mulx.s",
-            "sha3_224_ref.s",
             "sha3_256_ref.s",
             "sha3_384_ref.s",
             "sha3_512_ref.s",
@@ -122,7 +127,9 @@ mod x64_build {
         // Platform detection
         if simd256_support() {
             let files256 = svec![
+///// SYNC_WITH_UPSTREAM_GENERATE_AVX2_ASSEMBLY_FILENAMES_START
                 "sha3_224_avx2.s",
+///// SYNC_WITH_UPSTREAM_GENERATE_AVX2_ASSEMBLY_FILENAMES_END
                 "sha3_256_avx2.s",
                 "sha3_384_avx2.s",
                 "sha3_512_avx2.s",

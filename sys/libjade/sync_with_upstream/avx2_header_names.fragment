@@ -1,0 +1,8 @@
+{% for hash in instructions['hashes'] -%}
+    {%- for platform, implementations in hash['platforms'].items() -%}
+        {%- for implementation in implementations if implementation == 'avx2' %}
+#include "{{ hash['name'] | replace('-', '_') }}_{{ implementation }}.h"
+        {%- endfor -%}
+    {%- endfor %}
+{%- endfor %}
+

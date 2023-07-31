@@ -1,0 +1,8 @@
+{% for hash in instructions['hashes'] -%}
+    {%- for platform, implementations in hash['platforms'].items() -%}
+        {%- for implementation in implementations if implementation == 'ref' %}
+            "{{ hash['name'].replace('-', '_') }}_{{ implementation }}.s",
+        {%- endfor -%}
+    {%- endfor %}
+{%- endfor %}
+
